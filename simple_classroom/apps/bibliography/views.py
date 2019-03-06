@@ -15,7 +15,7 @@ class BibliographyView(View):
         for category in categories:
             result.append({
                 'category': category,
-                'books': category.book_set.filter(subject=request.site.subject),
+                'books': category.book_set.filter(subject=request.site.subject).filter(order__gt=0),
             })
         return render_to_response(
             self.template_name,

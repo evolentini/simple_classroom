@@ -19,6 +19,7 @@
             <h3>{{ book }} <br/><small>{{ book.edition|default:"" }}</small></h3>
             <p>Autor: {{book.author|default:"-"}}</p>
             <p>Editorial: {{book.editorial|default:"-"}}</p>
+            <p>{{book.comments|safe}}</p>
           </div>
         </div>
       </div>

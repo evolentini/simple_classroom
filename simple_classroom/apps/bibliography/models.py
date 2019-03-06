@@ -19,6 +19,7 @@ class GroupCategory(models.Model):
 
 
 class Book(models.Model):
+    order = models.IntegerField(_(u'Orden'), null=True, blank=True)
     author = models.CharField(_(u'Autor'), max_length=255, null=False, blank=False)
     category = models.ForeignKey(GroupCategory)
     edition = models.CharField(_(u'Edición'), max_length=255, null=False, blank=False)
@@ -27,11 +28,12 @@ class Book(models.Model):
                                     null=True, blank=True)
     subject = models.ForeignKey(Subject)
     title = models.CharField(_(u'Titulo'), max_length=255, null=False, blank=False)
+    comments = models.CharField(_(u'Comentarios'), max_length=255, null=True, blank=True)
 
     class Meta:
         verbose_name = _(u'Libro')
         verbose_name_plural = _(u'Libros')
-        ordering = ['title', ]
+        ordering = ['order', ]
 
     def __init__(self, *args, **kwargs):
         super(Book, self).__init__(*args, **kwargs)

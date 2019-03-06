@@ -5,9 +5,11 @@ from simple_classroom.apps.bibliography.models import Book, GroupCategory
 
 @admin.register(GroupCategory)
 class GroupCategoryAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'order')
 
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'author', 'subject', 'editorial', 'order')
+    list_filter = ('subject', )
+

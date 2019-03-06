@@ -7,9 +7,14 @@ from .models import Download, SiteDownload, CategoryDownload
 class DownloadInlineAdmin(admin.TabularInline):
     model = Download
 
+def delete_file(modeladmin, request, queryset):
+    for entry in queryset.all():
+        entry.data.delete()
+delete_file.short_description = "Eliminar Archivo enlazado/s"
 
 @admin.register(SiteDownload)
 class SiteDownloadAdmin(admin.ModelAdmin):
+    actions=[delete_file]
     list_display = ('title', 'site', 'download_type', 'category', 'has_data', )
     list_filter = ('site', 'download_type', )
 

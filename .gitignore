@@ -58,3 +58,5 @@ target/
 # SQLite
 *.sqlite3
 
+# Exported data
+*.json
